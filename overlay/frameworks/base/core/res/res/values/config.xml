@@ -39,6 +39,7 @@
    <integer name="config_lidOpenRotation">-1</integer>
    <integer name="config_deskDockKeepsScreenOn">0</integer>
    <integer name="config_lidNavigationAccessibility">1</integer>
+   <integer name="db_connection_pool_size">4</integer>
 
     <bool name="config_automatic_brightness_available">true</bool>
 

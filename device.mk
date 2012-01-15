@@ -22,12 +22,12 @@
 DEVICE := smba1002
 MANUFACTURER := viewsonic
 
-#ifeq ($(TARGET_PREBUILT_KERNEL),)
+ifeq ($(TARGET_PREBUILT_KERNEL),)
 #LOCAL_KERNEL := device/viewsonic/smba1002/kernel
-#LOCAL_KERNEL := ../android-tegra-nv-2.6.39/arch/arm/boot/zImage
-#else
-#LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-#endif
+    LOCAL_KERNEL := kernel/arch/arm/boot/zImage
+else
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
 
 DEVICE_PACKAGE_OVERLAYS := device/viewsonic/smba1002/overlay
 
@@ -79,13 +79,13 @@ PRODUCT_COPY_FILES := \
 
 # Modules
 PRODUCT_COPY_FILES += \
-     ../android-tegra-nv-2.6.39/arch/arm/mach-tegra/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
-     ../android-tegra-nv-2.6.39/drivers/scsi/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-     ../android-tegra-nv-2.6.39/drivers/net/wireless/bcm4329/bcm4329.ko:system/lib/modules/bcm4329.ko \
-     ../android-tegra-nv-2.6.39/drivers/media/video/videobuf2-memops.ko:system/lib/modules/videobuf2-memops.ko \
-     ../android-tegra-nv-2.6.39/drivers/media/video/videobuf2-vmalloc.ko:system/lib/modules/videobuf2-vmalloc.ko \
-     ../android-tegra-nv-2.6.39/drivers/media/video/vivi.ko:system/lib/modules/vivi.ko \
-     ../android-tegra-nv-2.6.39/sound/soc/tegra/snd-soc-tegra20-spdif.ko:system/lib/modules/snd-soc-tegra20-spdif.ko
+     kernel/arch/arm/mach-tegra/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
+     kernel/drivers/scsi/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+     kernel/drivers/net/wireless/bcm4329/bcm4329.ko:system/lib/modules/bcm4329.ko \
+     kernel/drivers/media/video/videobuf2-memops.ko:system/lib/modules/videobuf2-memops.ko \
+     kernel/drivers/media/video/videobuf2-vmalloc.ko:system/lib/modules/videobuf2-vmalloc.ko \
+     kernel/drivers/media/video/vivi.ko:system/lib/modules/vivi.ko \
+     kernel/sound/soc/tegra/snd-soc-tegra20-spdif.ko:system/lib/modules/snd-soc-tegra20-spdif.ko
 
 #    ../../../../device/viewsonic/smba1002/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
 #    device/viewsonic/smba1002/modules/bcm4329.ko:system/lib/modules/bcm4329.ko
@@ -152,12 +152,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.secure=0 \
 	persist.service.adb.enable=1 \
-        persist.sys.usb.config=mass_storage,adb
+        persist.sys.usb.config=adb
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0 \
 	persist.service.adb.enable=1 \
-        persist.sys.usb.config=mass_storage,adb
+        persist.sys.usb.config=adb
 
 PRODUCT_CHARACTERISTICS := tablet
 
