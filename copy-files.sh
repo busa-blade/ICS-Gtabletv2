@@ -18,12 +18,13 @@
 
 DEVICE=smba1002
 MANUFACTURER=viewsonic
-BASE=../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-if [ "x$1" = "x" ]; then
-  echo "You need to specifify the root of the /system directory"
-  exit
-fi
-SYSDIR=$1
+SYSDIR=proprietary
+MYDIR=`pwd`
+BASE=../../../vendor/$MANUFACTURER/$DEVICE/$SYSDIR
+#if [ "x$1" = "x" ]; then
+#  echo "You need to specifify the root of the /system directory"
+#  exit
+#fi
 
 
 rm -rf $BASE/*
@@ -33,8 +34,11 @@ for FILE in `cat proprietary-files.txt`; do
     if [ ! -d $BASE/$DIR ]; then
         mkdir -p $BASE/$DIR
     fi
-    cp $SYSDIR/$FILE $BASE/$FILE
+    cp $MYDIR/$SYSDIR/$FILE $BASE/$FILE
 done
+
+mkdir ../../../vendor/$MANUFACTURER/$DEVICE/app
+cp app/*.apk ../../../vendor/$MANUFACTURER/$DEVICE/app
 
 ./setup-makefiles.sh
 

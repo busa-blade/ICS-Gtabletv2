@@ -18,7 +18,10 @@
 # by BoardConfigVendor.mk
 
 DEVICE := smba1002
-MANUFACTURER := viewsonic 
+PRODUCT_MANUFACTURER := Malata
+
+PRODUCT_MODEL := smba1002
+PRODUCT_NAME := Gtablet
 
 BOARD_USES_GENERIC_AUDIO := true
 USE_CAMERA_STUB := false
@@ -40,7 +43,7 @@ TARGET_CPU_SMP := true
 #TARGET_HAVE_TEGRA_ERRATA_657451 := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-BOARD_KERNEL_BASE := 0x10000000
+#BOARD_KERNEL_BASE := 0x10000000
 #BOARD_KERNEL_BASE := 0x19200000
 #Stock CMDLINE
 #BOARD_KERNEL_CMDLINE := tegra_fbmem=8192000@0x1e018000 video=tegrafb console=tty0,115200n8 androidboot.console=tty0 mem=1024M@0M lp0_vec=8192@0x1e7f1020 lcd_manfid=AUO usbcore.old_scheme_first=1 tegraboot=nand mtdparts=tegra_nand:16384K@9984K(misc),16384K@26880K(recovery),16384K@43904K(boot),204800K@60928K(system),781824K@266240K(cache)
@@ -49,7 +52,8 @@ BOARD_KERNEL_BASE := 0x10000000
 #androidboot.carrier=wifi-only product_type=w
 #BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 #BOARD_KERNEL_CMDLINE := mem=512M@0M usbcore.old_scheme_first=1 video=tegrafb console=ttyUSB0,115200n8 androidboot.console=ttyUSB0 tegraboot=nand mtdparts=tegra_nand:16384K@7424K(misc),16384K@62208K(recovery),16384K@79104K(boot),204800K@96000K(system),222464K@301312K(cache),4096K@24320K(bootbmp),32768K@28928K(logodata) debug
-BOARD_KERNEL_CMDLINE := tegra_fbmem=8192000@0x1e018000 video=tegrafb console=ttyUSB0,115200n8 androidboot.console=ttyUSB0 mem=1024M@0M lp0_vec=8192@0x1e7f1020 lcd_manfid=AUO usbcore.old_scheme_first=1 tegraboot=nand mtdparts=tegra_nand:16384K@9984K(misc),16384K@26880K(recovery),16384K@43904K(boot),204800K@60928K(system),781824K@266240K(cache) debug
+#BOARD_KERNEL_CMDLINE := tegra_fbmem=8192000@0x1e018000 video=tegrafb console=tty0,115200n8 androidboot.console=tty0 mem=1024M@0M lp0_vec=8192@0x1e7f1020 lcd_manfid=AUO usbcore.old_scheme_first=1 tegraboot=nand mtdparts=tegra_nand:16384K@9984K(misc),16384K@26880K(recovery),16384K@43904K(boot),204800K@60928K(system),781824K@266240K(cache) debug
+#BOARD_KERNEL_CMDLINE := mem=448M@0M nvmem=64M@448M vmalloc=192M video=tegrafb console=ttyS0,115200n8 usbcore.old_scheme_first=1 cpuid=200102 devicetype=1002 bspversion=0202100907 btmac=9c5ed6131a00 tegraboot=nand mtdparts=tegra_nand:16384K@12032K(misc),16384K@62208K(recovery),16384K@79104K(boot),253696K@96000K(system),173056K@350720K(cache),4096K@7424K(bootbmp),32768K@28928K(logodata)
 BOARD_PAGE_SIZE := 0x00000800
 
 TARGET_NO_RADIOIMAGE := true
@@ -60,7 +64,7 @@ TARGET_BOOTLOADER_BOARD_NAME := harmony
 BOARD_EGL_CFG := device/viewsonic/smba1002/files/egl.cfg
 
 #BOARD_USES_HGL := true
-#BOARD_USES_OVERLAY := true
+BOARD_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
 
 #TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
@@ -70,10 +74,14 @@ USE_OPENGL_RENDERER := true
 #TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_ventana
 #TARGET_RELEASETOOLS_EXTENSIONS := device/viewsonic/smba1002
 #TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x01000000
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 128M
+#BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
+#BOARD_BOOTIMAGE_PARTITION_SIZE := 10M
 #BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01000000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0c800000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
+#BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0c800000
+#BOARD_SYSTEMIMAGE_PARTITION_SIZE := 200M
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 #TARGET_PREBUILT_KERNEL := device/viewsonic/smba1002/kernel

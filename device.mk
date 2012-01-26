@@ -42,10 +42,11 @@ PRODUCT_AAPT_PREF_CONFIG := mdpi
 PRODUCT_LOCALES += mdpi
 
 PRODUCT_COPY_FILES := \
-    $(LOCAL_KERNEL):kernel \
-    device/viewsonic/smba1002/files/init.harmony.rc:root/init.harmony.rc \
-    device/viewsonic/smba1002/files/ueventd.harmony.rc:root/ueventd.harmony.rc \
-    device/viewsonic/smba1002/files/nvram.txt:system/etc/wifi/nvram.txt
+	$(LOCAL_KERNEL):kernel \
+	device/viewsonic/smba1002/files/init.harmony.rc:root/init.harmony.rc \
+	device/viewsonic/smba1002/files/ueventd.harmony.rc:root/ueventd.harmony.rc \
+	device/viewsonic/smba1002/files/nvram.txt:system/etc/wifi/nvram.txt \
+	device/viewsonic/smba1002/files/init.harmony.usb.rc:root/init.harmony.usb.rc
 
 # APK
 #BUILD_PREBUILT := \
@@ -79,85 +80,133 @@ PRODUCT_COPY_FILES := \
 
 # Modules
 PRODUCT_COPY_FILES += \
-     kernel/arch/arm/mach-tegra/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
-     kernel/drivers/scsi/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-     kernel/drivers/net/wireless/bcm4329/bcm4329.ko:system/lib/modules/bcm4329.ko \
-     kernel/drivers/media/video/videobuf2-memops.ko:system/lib/modules/videobuf2-memops.ko \
-     kernel/drivers/media/video/videobuf2-vmalloc.ko:system/lib/modules/videobuf2-vmalloc.ko \
-     kernel/drivers/media/video/vivi.ko:system/lib/modules/vivi.ko \
-     kernel/sound/soc/tegra/snd-soc-tegra20-spdif.ko:system/lib/modules/snd-soc-tegra20-spdif.ko
-
-#    ../../../../device/viewsonic/smba1002/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-#    device/viewsonic/smba1002/modules/bcm4329.ko:system/lib/modules/bcm4329.ko
+	kernel/arch/arm/mach-tegra/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
+	kernel/drivers/scsi/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+	kernel/drivers/net/wireless/bcm4329/bcm4329.ko:system/lib/modules/bcm4329.ko \
+	kernel/drivers/media/video/videobuf2-memops.ko:system/lib/modules/videobuf2-memops.ko \
+	kernel/drivers/media/video/videobuf2-vmalloc.ko:system/lib/modules/videobuf2-vmalloc.ko \
+	kernel/drivers/media/video/vivi.ko:system/lib/modules/vivi.ko
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    device/viewsonic/smba1002/files/bcm4329.hcd:system/etc/firmware/bcm4329.hcd
-	
+	device/viewsonic/smba1002/files/bcm4329.hcd:system/etc/firmware/bcm4329.hcd
+
 # Touchscreen
 PRODUCT_COPY_FILES += \
-    device/viewsonic/smba1002/files/at168_touch.idc:system/usr/idc/at168_touch.idc 
+	device/viewsonic/smba1002/files/at168_touch.idc:system/usr/idc/at168_touch.idc 
 
 # Graphics
 PRODUCT_COPY_FILES += \
-    device/viewsonic/smba1002/files/media_profiles.xml:system/etc/media_profiles.xml
+	device/viewsonic/smba1002/files/media_profiles.xml:system/etc/media_profiles.xml
+
+#Wifi Device configuration
+PRODUCT_COPY_FILES += \
+	device/viewsonic/smba1002/files/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
+# Device Firmware
+PRODUCT_COPY_FILES += \
+	device/viewsonic/smba1002/firmware/nvmm_aacdec.axf:system/vendor/firmware/nvmm_aacdec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_adtsdec.axf:system/vendor/firmware/nvmm_adtsdec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_h264dec2x.axf:system/vendor/firmware/nvmm_h264dec2x.axf \
+	device/viewsonic/smba1002/firmware/nvmm_h264dec.axf:system/vendor/firmware/nvmm_h264dec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_jpegdec.axf:system/vendor/firmware/nvmm_jpegdec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_jpegenc.axf:system/vendor/firmware/nvmm_jpegenc.axf \
+	device/viewsonic/smba1002/firmware/nvmm_manager.axf:system/vendor/firmware/nvmm_manager.axf \
+	device/viewsonic/smba1002/firmware/nvmm_mp3dec.axf:system/vendor/firmware/nvmm_mp3dec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_mpeg4dec.axf:system/vendor/firmware/nvmm_mpeg4dec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_reference.axf:system/vendor/firmware/nvmm_reference.axf \
+	device/viewsonic/smba1002/firmware/nvmm_service.axf:system/vendor/firmware/nvmm_service.axf \
+	device/viewsonic/smba1002/firmware/nvmm_wavdec.axf:system/vendor/firmware/nvmm_wavdec.axf
 
 # Generic
 PRODUCT_COPY_FILES += \
-   device/viewsonic/smba1002/files/vold.fstab:system/etc/vold.fstab
+	device/viewsonic/smba1002/files/vold.fstab:system/etc/vold.fstab
 
 PRODUCT_PROPERTY_OVERRIDES := \
-    wifi.interface=wlan0 \
-    ro.sf.lcd_density=120 \
-    wifi.supplicant_scan_interval=15
+	wifi.interface=wlan0 \
+	ro.sf.lcd_density=120 \
+	wifi.supplicant_scan_interval=15 \
+	sys.usb.config=adb,mass_storage,mtp,ptp
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
 	HoloSpiralWallpaper \
         LiveWallpapersPicker \
-        VisualizationWallpapers
+        VisualizationWallpapers \
+	Galaxy4 \
+	HoloSpiral \
+	LivePicker \
+	MagicSmoke \
+	MusicVisualization \
+	NoiseField \
+	PhaseBeam
 
 PRODUCT_PACKAGES += \
-        audio.a2dp.default \
-        libaudioutils
+        ChainsDD \
+    	Quadrant \
+	fard
+#    app/.root_browser:system/etc/.root_browser \
+#    app/RootBrowserFree.apk:system/app/RootBrowserFree.apk \
+#    app/CalendarGoogle.apk:system/app/CalendarGoogle.apk \
+#    app/CalendarProvider.apk:system/app/CalendarProvider.apk \
+#    app/ChromeBookmarksSyncAdapter.apk:system/app/ChromeBookmarksSyncAdapter.apk \
+#    app/Elixir.apk:system/app/Elixir.apk \
+#    app/GalleryGoogle.apk:system/app/GalleryGoogle.apk \
+#    app/GenieWidget.apk:system/app/GenieWidget.apk \
+#    app/Gmail.apk:system/app/Gmail.apk \
+#    app/GoogleBackupTransport.apk:system/app/GoogleBackupTransport.apk \
+#    app/GoogleContactsSyncAdapter.apk:system/app/GoogleContactsSyncAdapter.apk \
+#    app/GoogleFeedback.apk:system/app/GoogleFeedback.apk \
+#    app/GoogleLoginService.apk:system/app/GoogleLoginService.apk \
+#    app/GooglePartnerSetup.apk:system/app/GooglePartnerSetup.apk \
+#    app/GoogleQuickSearchBox.apk:system/app/GoogleQuickSearchBox.apk \
+#    app/GoogleServicesFramework.apk:system/app/GoogleServicesFramework.apk \
+#    app/GoogleTTS.apk:system/app/GoogleTTS.apk \
+#    app/MarketUpdater.apk:system/app/MarketUpdater.apk \
+#    app/MediaUploader.apk:system/app/MediaUploader.apk \
+#    app/NetworkLocation.apk:system/app/NetworkLocation.apk \
+#    app/OneTimeInitializer.apk:system/app/OneTimeInitializer.apk \
+#    app/SetupWizard.apk:system/app/SetupWizard.apk \
+#    app/Talk.apk:system/app/Talk.apk \
+#    app/Vending.apk:system/app/Vending.apk \
+#    app/VoiceSearch.apk:system/app/VoiceSearch.apk \
+#    app/YouTube.apk:system/app/YouTube.apk
+
+PRODUCT_PACKAGES += \
+	audio.a2dp.default \
+	audio.primary.harmony 
 
 PRODUCT_PACKAGES += \
 	sensors.harmony \
 	lights.harmony \
-	gps.harmony \
-	libmbm-ril
+	gps.harmony
         
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
-    frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
-    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml 
+	frameworks/base/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+	frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+	frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+	frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
+	frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+	frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+	frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+	frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml 
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=131072
 
 #Set default.prop properties for root + adb
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.secure=0 \
-	persist.service.adb.enable=1 \
-        persist.sys.usb.config=adb
 
-ADDITIONAL_DEFAULT_PROPERTIES += \
-	ro.secure=0 \
-	persist.service.adb.enable=1 \
-        persist.sys.usb.config=adb
+#PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+#        persist.sys.usb.config=adb
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -173,10 +222,11 @@ PRODUCT_PACKAGES += \
 
 # for bugmailer
 ifneq ($(TARGET_BUILD_VARIANT),user)
-	PRODUCT_PACKAGES += send_bug
+	PRODUCT_PACKAGES += \
+		send_bug
 	PRODUCT_COPY_FILES += \
-            system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-            system/extras/bugmailer/send_bug:system/bin/send_bug
+		system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
+		system/extras/bugmailer/send_bug:system/bin/send_bug
 endif
 
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)

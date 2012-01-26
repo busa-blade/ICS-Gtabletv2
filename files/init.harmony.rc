@@ -1,16 +1,14 @@
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
-    export EXTERNAL_STORAGE /mnt/sdcard
+    export EXTERNAL_STORAGE /mnt/emmc
     mkdir /mnt/sdcard 0000 system system
     # for backwards compatibility
     symlink /mnt/sdcard /sdcard
-    mkdir /mnt/microsd 0000 system system
-    symlink /mnt/microsd /microsd
+    mkdir /mnt/emmc 0000 system system
+    symlink /mnt/emmc /emmc
     mkdir /mnt/usbdisk 0000 system system
     symlink /mnt/usbdisk /usbdisk
-    mkdir /mnt/external1 0000 system system
-    mkdir /mnt/external2 0000 system system
 
 on fs
     # Mount /system rw first to give the filesystem a chance to save a checkpoint
@@ -68,12 +66,20 @@ on boot
 
 
 # Power management settings
+#    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 216000
+#    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1000000
+#    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+#    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 216000
+#    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1000000
+#    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+#    write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 80
+
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 216000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1000000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 216000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1000000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 80
 
 # GPS
@@ -121,6 +127,7 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci \
     group system bluetooth net_bt_admin misc
     oneshot
     disabled
+
 #service hciattach /system/bin/brcm_patchram_plus --enable_hci \
 #    --baudrate 2700000 --patchram /system/lib/hw/wlan/bcm4329.hcd --pcm_role slave \
 #    --enable_lpm /dev/ttyHS2
