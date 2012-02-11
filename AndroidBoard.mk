@@ -14,6 +14,7 @@
 
 
 #LOCAL_PATH := kernel/arch/arm/boot
+LOCAL_PATH := $(call my-dir)
 
 #
 # Boot files
@@ -27,7 +28,6 @@
 #$(file): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 #	$(transform-prebuilt-to-target)
 
-subdir_makefiles:= \
-        $(LOCAL_PATH)/app/Android.mk \
-	$(LOCAL_PATH)/Superuser/Android.mk
-
+subdir_makefiles := \
+	$(LOCAL_PATH)/Superuser/Android.mk \
+	$(LOCAL_PATH)/Packages/apps/Android.mk
