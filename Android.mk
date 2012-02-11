@@ -28,32 +28,3 @@ include $(call all-makefiles-under,$(LOCAL_PATH),$(LOCAL_PATH)/app)
 
 DIR_STRUCTURE := viewsonic/smba1002
 
-#PRODUCT_COPY_FILES :=  \
-#    app/Quadrant.apk:system/app/Quadrant.apk \
-#    app/.root_browser:system/etc/.root_browser \
-#    app/RootBrowserFree.apk:system/app/RootBrowserFree.apk \
-#    app/CalendarGoogle.apk:system/app/CalendarGoogle.apk \
-#    app/CalendarProvider.apk:system/app/CalendarProvider.apk \
-#    app/ChromeBookmarksSyncAdapter.apk:system/app/ChromeBookmarksSyncAdapter.apk \
-#    app/Elixir.apk:system/app/Elixir.apk \
-#    app/GalleryGoogle.apk:system/app/GalleryGoogle.apk \
-#    app/GenieWidget.apk:system/app/GenieWidget.apk \
-#    app/Gmail.apk:system/app/Gmail.apk \
-#    app/GoogleBackupTransport.apk:system/app/GoogleBackupTransport.apk \
-#    app/GoogleContactsSyncAdapter.apk:system/app/GoogleContactsSyncAdapter.apk \
-#    app/GoogleFeedback.apk:system/app/GoogleFeedback.apk \
-#    app/GoogleLoginService.apk:system/app/GoogleLoginService.apk \
-#    app/GooglePartnerSetup.apk:system/app/GooglePartnerSetup.apk \
-#    app/GoogleQuickSearchBox.apk:system/app/GoogleQuickSearchBox.apk \
-#    app/GoogleServicesFramework.apk:system/app/GoogleServicesFramework.apk \
-#    app/GoogleTTS.apk:system/app/GoogleTTS.apk \
-#    app/MarketUpdater.apk:system/app/MarketUpdater.apk \
-#    app/MediaUploader.apk:system/app/MediaUploader.apk \
-#    app/NetworkLocation.apk:system/app/NetworkLocation.apk \
-#    app/OneTimeInitializer.apk:system/app/OneTimeInitializer.apk \
-#    app/SetupWizard.apk:system/app/SetupWizard.apk \
-#    app/Talk.apk:system/app/Talk.apk \
-#    app/Vending.apk:system/app/Vending.apk \
-#    app/VoiceSearch.apk:system/app/VoiceSearch.apk \
-#    app/YouTube.apk:system/app/YouTube.apk
-
