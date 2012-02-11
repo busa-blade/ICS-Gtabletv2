@@ -37,8 +37,8 @@ for FILE in `cat proprietary-files.txt`; do
     cp $MYDIR/$SYSDIR/$FILE $BASE/$FILE
 done
 
-mkdir ../../../vendor/$MANUFACTURER/$DEVICE/app
-cp app/*.apk ../../../vendor/$MANUFACTURER/$DEVICE/app
+mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/Packages/apps
+cp Packages/apps/*.apk ../../../vendor/$MANUFACTURER/$DEVICE/Packages/apps
 
 ./setup-makefiles.sh
 
