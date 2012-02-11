@@ -46,7 +46,8 @@ PRODUCT_COPY_FILES := \
 	device/viewsonic/smba1002/files/init.harmony.rc:root/init.harmony.rc \
 	device/viewsonic/smba1002/files/ueventd.harmony.rc:root/ueventd.harmony.rc \
 	device/viewsonic/smba1002/files/nvram.txt:system/etc/wifi/nvram.txt \
-	device/viewsonic/smba1002/files/init.harmony.usb.rc:root/init.harmony.usb.rc
+	device/viewsonic/smba1002/files/init.harmony.usb.rc:root/init.harmony.usb.rc \
+	device/viewsonic/smba1002/files/init.rc:root/init.rc
 
 # APK
 #BUILD_PREBUILT := \
@@ -80,12 +81,16 @@ PRODUCT_COPY_FILES := \
 
 # Modules
 PRODUCT_COPY_FILES += \
-	kernel/arch/arm/mach-tegra/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
 	kernel/drivers/scsi/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
 	kernel/drivers/net/wireless/bcm4329/bcm4329.ko:system/lib/modules/bcm4329.ko \
-	kernel/drivers/media/video/videobuf2-memops.ko:system/lib/modules/videobuf2-memops.ko \
-	kernel/drivers/media/video/videobuf2-vmalloc.ko:system/lib/modules/videobuf2-vmalloc.ko \
-	kernel/drivers/media/video/vivi.ko:system/lib/modules/vivi.ko
+	kernel/drivers/media/video/ov9640.ko:system/lib/modules/ov9640.ko \
+	kernel/drivers/net/usb/smsc95xx.ko:system/lib/modules/smsc95xx.ko
+#	kernel/drivers/net/phy/libphy.ko:system/lib/modules/libphy.ko \
+#	kernel/drivers/net/smsc911x.ko:system/lib/modules/smsc911x.ko \
+#       kernel/arch/arm/mach-tegra/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
+#	kernel/drivers/media/video/videobuf2-memops.ko:system/lib/modules/videobuf2-memops.ko \
+#	kernel/drivers/media/video/videobuf2-vmalloc.ko:system/lib/modules/videobuf2-vmalloc.ko \
+#	kernel/drivers/media/video/vivi.ko:system/lib/modules/vivi.ko \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
@@ -104,7 +109,36 @@ PRODUCT_COPY_FILES += \
 	device/viewsonic/smba1002/files/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # Device Firmware
+#PRODUCT_COPY_FILES += \
+#	device/viewsonic/smba1002/firmware/nvmm_aacdec.axf:system/vendor/firmware/nvmm_aacdec.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_adtsdec.axf:system/vendor/firmware/nvmm_adtsdec.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_h264dec2x.axf:system/vendor/firmware/nvmm_h264dec2x.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_h264dec.axf:system/vendor/firmware/nvmm_h264dec.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_jpegdec.axf:system/vendor/firmware/nvmm_jpegdec.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_jpegenc.axf:system/vendor/firmware/nvmm_jpegenc.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_manager.axf:system/vendor/firmware/nvmm_manager.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_mp3dec.axf:system/vendor/firmware/nvmm_mp3dec.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_mpeg4dec.axf:system/vendor/firmware/nvmm_mpeg4dec.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_reference.axf:system/vendor/firmware/nvmm_reference.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_service.axf:system/vendor/firmware/nvmm_service.axf \
+#	device/viewsonic/smba1002/firmware/nvmm_wavdec.axf:system/vendor/firmware/nvmm_wavdec.axf
+
 PRODUCT_COPY_FILES += \
+	device/viewsonic/smba1002/firmware/arb_test.axf:system/vendor/firmware/arb_test.axf \
+	device/viewsonic/smba1002/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
+	device/viewsonic/smba1002/firmware/bcm4330.hcd:system/vendor/firmware/bcm4330.hcd \
+	device/viewsonic/smba1002/firmware/load_test0.axf:system/vendor/firmware/load_test0.axf \
+	device/viewsonic/smba1002/firmware/load_test1.axf:system/vendor/firmware/load_test1.axf \
+	device/viewsonic/smba1002/firmware/load_test2.axf:system/vendor/firmware/load_test2.axf \
+	device/viewsonic/smba1002/firmware/load_test3.axf:system/vendor/firmware/load_test3.axf \
+	device/viewsonic/smba1002/firmware/load_test4.axf:system/vendor/firmware/load_test4.axf \
+	device/viewsonic/smba1002/firmware/memory_stress.axf:system/vendor/firmware/memory_stress.axf \
+	device/viewsonic/smba1002/firmware/nvavp_os_00001000.bin:system/vendor/firmware/nvavp_os_00001000.bin \
+	device/viewsonic/smba1002/firmware/nvavp_os_0ff00000.bin:system/vendor/firmware/nvavp_os_0ff00000.bin \
+	device/viewsonic/smba1002/firmware/nvavp_os_e0000000.bin:system/vendor/firmware/nvavp_os_e0000000.bin \
+	device/viewsonic/smba1002/firmware/nvavp_os_eff00000.bin:system/vendor/firmware/nvavp_os_eff00000.bin \
+	device/viewsonic/smba1002/firmware/nvavp_vid_ucode_alt.bin:system/vendor/firmware/nvavp_vid_ucode_alt.bin \
+	device/viewsonic/smba1002/firmware/nvavp_vid_ucode.bin:system/vendor/firmware/nvavp_vid_ucode.bin \
 	device/viewsonic/smba1002/firmware/nvmm_aacdec.axf:system/vendor/firmware/nvmm_aacdec.axf \
 	device/viewsonic/smba1002/firmware/nvmm_adtsdec.axf:system/vendor/firmware/nvmm_adtsdec.axf \
 	device/viewsonic/smba1002/firmware/nvmm_h264dec2x.axf:system/vendor/firmware/nvmm_h264dec2x.axf \
@@ -113,10 +147,25 @@ PRODUCT_COPY_FILES += \
 	device/viewsonic/smba1002/firmware/nvmm_jpegenc.axf:system/vendor/firmware/nvmm_jpegenc.axf \
 	device/viewsonic/smba1002/firmware/nvmm_manager.axf:system/vendor/firmware/nvmm_manager.axf \
 	device/viewsonic/smba1002/firmware/nvmm_mp3dec.axf:system/vendor/firmware/nvmm_mp3dec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_mpeg2dec.axf:system/vendor/firmware/nvmm_mpeg2dec.axf \
 	device/viewsonic/smba1002/firmware/nvmm_mpeg4dec.axf:system/vendor/firmware/nvmm_mpeg4dec.axf \
 	device/viewsonic/smba1002/firmware/nvmm_reference.axf:system/vendor/firmware/nvmm_reference.axf \
 	device/viewsonic/smba1002/firmware/nvmm_service.axf:system/vendor/firmware/nvmm_service.axf \
-	device/viewsonic/smba1002/firmware/nvmm_wavdec.axf:system/vendor/firmware/nvmm_wavdec.axf
+	device/viewsonic/smba1002/firmware/nvmm_sorensondec.axf:system/vendor/firmware/nvmm_sorensondec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_vc1dec_2x.axf:system/vendor/firmware/nvmm_vc1dec_2x.axf \
+	device/viewsonic/smba1002/firmware/nvmm_vc1dec.axf:system/vendor/firmware/nvmm_vc1dec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_wavdec.axf:system/vendor/firmware/nvmm_wavdec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_wmadec.axf:system/vendor/firmware/nvmm_wmadec.axf \
+	device/viewsonic/smba1002/firmware/nvmm_wmaprodec.axf:system/vendor/firmware/nvmm_wmaprodec.axf \
+	device/viewsonic/smba1002/firmware/nvrm_avp_00001000.bin:system/vendor/firmware/nvrm_avp_00001000.bin \
+	device/viewsonic/smba1002/firmware/nvrm_avp_0ff00000.bin:system/vendor/firmware/nvrm_avp_0ff00000.bin \
+	device/viewsonic/smba1002/firmware/nvrm_avp_8e000000.bin:system/vendor/firmware/nvrm_avp_8e000000.bin \
+	device/viewsonic/smba1002/firmware/nvrm_avp_9e000000.bin:system/vendor/firmware/nvrm_avp_9e000000.bin \
+	device/viewsonic/smba1002/firmware/nvrm_avp_be000000.bin:system/vendor/firmware/nvrm_avp_be000000.bin \
+	device/viewsonic/smba1002/firmware/nvrm_avp.bin:system/vendor/firmware/nvrm_avp.bin \
+	device/viewsonic/smba1002/firmware/nvrm_avp_e0000000.bin:system/vendor/firmware/nvrm_avp_e0000000.bin \
+	device/viewsonic/smba1002/firmware/nvrm_avp_eff00000.bin:system/vendor/firmware/nvrm_avp_eff00000.bin \
+	device/viewsonic/smba1002/firmware/transport_stress.axf:system/vendor/firmware/transport_stress.axf
 
 # Generic
 PRODUCT_COPY_FILES += \
@@ -230,6 +279,9 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 endif
 
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=16m
 
 # Make it optional to include vendor stuff..Just to be nice ;)
 ifneq ($(TARGET_IGNORE_VENDOR),yes)
